@@ -1,0 +1,14 @@
+e2 to e4
+e7 to e5
+g1 to f3
+b8 to c6
+f1 to c4
+c6 to d4
+f3 to e5
+d8 to g5
+e5 to f7
+g5 to g2
+h1 to f1
+g2 to e4
+c4 to e2
+d4 to f3
