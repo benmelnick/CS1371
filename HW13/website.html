@@ -1,0 +1,131 @@
+<html>
+    <head>
+        <title>Grade Calculator</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script src="website.js"></script>
+        <link rel="stylesheet" href="website.css">
+
+    </head>
+
+    <body>
+        <div class="container-fluid"> <!--a div is just a block of something-->
+            <div class="hidden-xs col-sm-1 col-md-2"></div>
+            <div class="col-xs-12 col-sm-10 col-md-8">
+                <div class="row">
+                    <div class="jumbotron">
+                            <h3>Grade Calculator</h3>
+                    </div>
+                </div>
+                <div class="row"> <!--row class provides rows-->
+                    <div class="jumbotron"> <!--jumbotron provides a background for a section-->
+                        <div class="col-xs-12 col-sm-6"> <!--columns, divides the row into 12 columns-->
+                            <div class="dropdown container-fluid">
+                            <a class="btn btn-custom dropdown-toggle" type="button" data-toggle="dropdown">Preset Classes <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" id="CS1371">CS1371</a></li> <!--href gives links to go to, # stays on page-->
+                                <li><a href="#" id="AE1350">AE1350</a></li>
+                                <li><a href="#" id="AE1601">AE1601</a></li>
+                                <li><a href="#" id="AE1770">AE1770</a></li>
+                                <li><a href="#" id="CHEM1211">CHEM1211</a></li>
+                                <li><a href="#" id="CHEM1212">CHEM1212</a></li>
+                                <li><a href="#" id="CHEM1315">CHEM1315</a></li>
+                                <li><a href="#" id="CHEM2311">CHEM2311</a></li>
+                                <li><a href="#" id="ECON1101">ECON1101</a></li>
+                                <li><a href="#" id="ECON2100">ECON2100</a></li>
+                                <li><a href="#" id="ECON2101">ECON2101</a></li>
+                                <li><a href="#" id="ENGL1101">ENGL1101</a></li>
+                                <li><a href="#" id="ENGL1102">ENGL1102</a></li>
+                                <li><a href="#" id="MATH1111">MATH1111</a></li>
+                                <li><a href="#" id="MATH1113">MATH1113</a></li>
+                                <li><a href="#" id="MATH1501">MATH1501</a></li>
+                                <li><a href="#" id="MATH1502">MATH1502</a></li>
+                                <li><a href="#" id="PHYS2211">PHYS2211</a></li>
+                                <li><a href="#" id="PHYS2212">PHYS2212</a></li>
+                                <li><a href="#" id="PHYS2213">PHYS2213</a></li>
+                                <li><a href="#" id="PHIL2010">PHIL2010</a></li>
+                                <li><a href="#" id="PHIL2025">PHIL2025</a></li>
+                                <li><a href="#" id="PSYC2005">PSYC2005</a></li>
+                                <li><a href="#" id="PSYC2020">PSYC2020</a></li>
+                                <li><a href="#" id="PSYC2103">PSYC2103</a></li>
+                                <li><a href="#" id="NRE2110">NRE2110</a></li>
+                                <li><a href="#" id="NRE2698">NRE2698</a></li>
+                                <li><a href="#" id="CS1331">CS1331</a></li>
+                                <li><a href="#" id="CS1332">CS1332</a></li>
+                                <li><a href="#" id="ECE1010">ECE1010</a></li>
+                                <li><a href="#" id="ECE2020">ECE2020</a></li>
+                                <li><a href="#" id="ECE2026">ECE2026</a></li>
+                            </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 text-center">
+                            <a class="btn btn-custom container-fluid" id="custom">Custom Calculator <span class="caret"></span></a>
+                        </div>
+                        <br>
+                        <div class="hidden" id="calculator">
+                            <br>
+                            <br>
+                            <div class="form-group form-group-lg">
+                                <div class="container-fluid">
+                                    <div class="input-group">
+                                        <div class="col-xs-12 col-sm-4"><label for="test">Tests</label></div>
+                                        <div class="col-xs-12 col-sm-4"><input class="form-control score" type="number" id="test" placeholder="Score"></div>
+                                        <div class="col-xs-12 col-sm-4"><input id="test2" type="percent" class="form-control weight" placeholder="Weight"></div>
+                                    </div>
+                                </div>
+                                <div class="container-fluid">
+                                    <div class="input-group">
+                                        <div class="col-xs-12 col-sm-4"><label for="homework">Homework</label></div>
+                                        <div class="col-xs-12 col-sm-4"><input class="form-control score" type="number" id="homework" placeholder="Score"></div>
+                                        <div class="col-xs-12 col-sm-4"><input id="homework2" type="percent" class="form-control weight" placeholder="Weight"></div>
+                                    </div>
+                                </div>
+                                <div class="container-fluid">
+                                    <div class="input-group">
+                                        <div class="col-xs-12 col-sm-4"><label for="quiz">Quizes</label></div>
+                                        <div class="col-xs-12 col-sm-4"><input class="form-control score" type="number" id="quiz" placeholder="Score"></div>
+                                        <div class="col-xs-12 col-sm-4"><input id="quiz2" type="percent" class="form-control weight" placeholder="Weight"></div>
+                                    </div>
+                                </div>
+                                <div class="container-fluid">
+                                    <div class="input-group">
+                                        <div class="col-xs-12 col-sm-4"><label for="class_participation">Class Participation</label></div>
+                                        <div class="col-xs-12 col-sm-4"><input class="form-control score" type="number" id="class_participation" placeholder="Score"></div>
+                                        <div class="col-xs-12 col-sm-4"><input id="class_participation2" type="percent" class="form-control weight" placeholder="Weight"></div>
+                                    </div>
+                                </div>
+                                <div class="container-fluid">
+                                    <div class="input-group">
+                                        <div class="col-xs-12 col-sm-4"><label for="final_exam">Final Exam</label></div>
+                                        <div class="col-xs-12 col-sm-4"><input class="form-control score" type="number" id="final_exam" placeholder="Score"></div>
+                                        <div class="col-xs-12 col-sm-4"><input id="final_exam2" type="percent" class="form-control weight" placeholder="Weight"></div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="container-fluid">
+                                    <a class="btn btn-custom pull-right" id="sbmit">Calculate</a>
+                                    <br>
+                                </div>
+                                <div class="container-fluid">
+                                    <label for="magic">Final Exam Calculator</label>
+                                        <input class="form-control magic" type="number" id="magic_input" placeholder="Score">
+                                        <br>
+                                    <a class="btn btn-custom pull-right" id="magic_button">Calculate final</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="jumbotron" id="answer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden-xs col-sm-1 col-md-2"></div>
+
+        </div>
+    </body>
+
+</html>

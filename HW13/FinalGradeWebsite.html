@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    
+    
+        <head>
+            <title>finalGradeCalculator</title>
+        <style>
+            body {;
+                  background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/J9H9WF0/blue-turquoise-gradient-polygon-shaped-background-zoomed-in-and-zoomed-out-in-one-motion_nj5dnqsrl__F0000.png");
+                  border: 2px solid yellow;}
+            h1   {color: blue;
+                  font: Verdana;
+                  font-size: 200%}
+            p    {color: red;
+                  font-family: cursive
+                  }
+            table, th, td {
+                border: 4px green;
+                border-collapse: collapse;}
+            th, th{padding: 5px}
+        </style>
+        </head>
+    
+    <body>
+        
+        <center><h1>How screwed are you?</h1></center>
+        <br>
+    <p>Enter how much each category is weighted for your class and your grades per
+       section</p>
+        
+        <img src="https://i.pinimg.com/736x/c5/cd/30/c5cd30f1afa80b86ad6dc0cf944aa4ee--finals-week-funny-finals-week-college.jpg" align="right">
+        <br>
+        <table style="width:40%">
+            <tr>
+                <th></th>
+                <th>Weight %</th>
+                <th>Grade</th>
+            </tr>
+            <tr>
+                <th>Tests</th>
+                <th><input type="text" id="TestWeight" size=5 value=""></th>
+                <th><input type="text" id="TestGrade" size=5 value=""></th>
+            </tr>
+            <tr>
+                <th>Homework</th>
+                <th><input type="text" id="HomeworkWeight" size=5 value=""></th>
+                <th><input type="text" id="HomeworkGrade" size=5 value=""></th>
+            </tr>
+            <tr>
+                <th>Quizes</th>
+                <th><input type="text" id="QuizWeight" size=5 value=""></th>
+                <th><input type="text" id="QuizGrade" size=5 value=""></th>
+            </tr>
+            <tr>
+                <th>Participation</th>
+                <th><input type="text" id="ParticipationWeight" size=5 value=""></th>
+                <th><input type="text" id="ParticipationGrade" size=5 value=""></th>
+            </tr>
+            <tr>
+                <th>Extra Credit</th>
+                <th><input type="text" id="ExtraCreditWeight" size=5 value=""></th>
+                <th><input type="text" id="ExtraCreditGrade" size=5 value=""></th>
+            </tr>
+            <tr>
+                <th>Final Exam</th>
+                <th><input type="text" id="FinalExamWeight" size=5 value=""></th>
+            </tr>
+            <tr>
+                <th>Desired Grade</th>
+                <th></th>
+                <th><input type="text" id="DesiredGrade" size=5 value=""></th>
+            </tr>
+        </table>
+        
+        
+        <input type="button" value="*Drum Roll*" onclick="finalGrade()">
+        
+    <div id="outputDiv" style="height: 50px; width: 100%;"></div>
+        
+ <script type="text/javascript">
+        
+        function finalGrade()
+        {    
+            var weightTotals=parseFloat(document.getElementById('TestWeight').value)+parseFloat(document.getElementById('HomeworkWeight').value)+parseFloat(document.getElementById('QuizWeight').value)+parseFloat(document.getElementById('ParticipationWeight').value)+parseFloat(document.getElementById('ExtraCreditWeight').value)+parseFloat(document.getElementById('FinalExamWeight').value);
+            
+            if (weightTotals > 100) {
+            var display=document.getElementById('outputDiv');
+            display.innerHTML='ERROR, the total of Weight exceeds 100%';
+            
+        } else {
+            
+
+            
+        var percentageTest=parseFloat((document.getElementById('TestWeight').value*document.getElementById('TestGrade').value)*.0001);
+        var percentageHomework=parseFloat((document.getElementById('HomeworkWeight').value*document.getElementById('HomeworkGrade').value)*.0001);
+        var percentageQuiz=parseFloat((document.getElementById('QuizWeight').value*document.getElementById('QuizGrade').value)*.0001);
+        var percentageParticipation=parseFloat((document.getElementById('ParticipationWeight').value*document.getElementById('ParticipationGrade').value)*.0001);
+        var percentageExtraCredit=parseFloat((document.getElementById('ExtraCreditWeight').value*document.getElementById('ExtraCreditGrade').value)*.0001);
+        var desiredGrade=parseFloat(document.getElementById('DesiredGrade').value*.01);
+        var finalWeight=parseFloat(document.getElementById('FinalExamWeight').value*.01);
+        
+        var finalExamGrade=Math.round(((desiredGrade-percentageTest-percentageHomework-percentageQuiz-percentageParticipation-percentageExtraCredit)/finalWeight)*100);
+        
+        var display=document.getElementById('outputDiv');
+        
+        display.innerHTML='You need a: ' +finalExamGrade;
+        
+        }
+        }
+        
+</script>
+        
+        <br>
+        <br>
+     
+
+    </body>
+
+</html>

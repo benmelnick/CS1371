@@ -1,0 +1,24 @@
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%; /* Bottom of button */
+  /*right: 0;
+  /*margin-left: -100px; /* More to the left */
+}
+
+.jumbotron {
+    background-color: #4E4B7B;
+}
+
+body {
+    background-color: #231F51;
+    color : #FFFBCD;
+}
+
+.btn-custom {
+    background-color: #FFFBCD;
+    color : #4E4B7B;
+}

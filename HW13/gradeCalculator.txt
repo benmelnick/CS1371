@@ -1,0 +1,83 @@
+$(function(){
+    //classes use dots, ids use #
+    $("#info").click(function(){ //when anything with the id 'info' is clicked, run the function
+        alert("Start by choosing a course. If your course is not listed, click 'Custom' to manually enter the category weights. If you have taken your final and know your grade, input the grade and click 'Calculate final grade.' Otherwise, only enter the weight of your final, what grade you would like to receive in the class, and click 'Calculate final exam score.'");
+    });
+
+    //selecting present class from dropdown
+    $(".dropdown ul li a").click(function() {
+        var param = $(this).attr("id"); //find the name of the course that was chosen
+        var url = "class=" + String(param); //append course name to "class="
+
+        $.get(
+        "http://cs1371.gatech.edu/getClassInfo/?" + String(url), //create new url
+        function(data) {
+           var parsed = $.parseJSON(data);
+
+           $.each(parsed, function(index, element){ //index and element are variables that can be used inside of the iteration
+              var id = "#" + String(index) + "2"; //finding id to change value of - weight is always ____2
+              $(String(id)).val(Number(element)); //change value of category
+              $(String(id)).prop('disabled', true);
+           });
+
+        });
+
+        $(".input-group").each(function (index,element) {
+            $(this).find(".score").val(""); //empty value of all the score input fields
+        });
+
+    });
+
+    //calculate final grade if final exam score is known
+    $("#gradeCalc").click(function(){
+        var total = 0;
+        $(".input-group").each(function(index,element){ //iterate through every div with input group class
+            var extra = 0;
+            if($(this).find(".score").attr("id") != "extra_credit"){
+                var score = parseInt($(this).find(".score").val()); //searches inputs with class of 'score', parses to int
+                var weight = parseInt($(this).find(".weight").val()) / 100; //searches inputs with class of 'weight', parses to int
+                total += score*weight;
+            }
+            if($(this).find(".score").attr("id") == "extra_credit"){
+                extra = parseInt($(this).find(".score").val());
+            }
+          total += extra;
+
+        });
+        $("#answer").html("<h3>" + String(total.toFixed(2)) + "%</h3>"); //changes html code of answer div
+    });
+
+    //calculate score for final exam
+    $("#examCalc").click(function() {
+        var total = 0;
+        $(".input-group").each(function(index, element){ //go through every input-group
+            //calculate score before the final exam
+            var extra = 0;
+          if($(this).find(".score").attr("id") != "final_exam" && $(this).find(".score").attr("id") != "extra_credit") { //if the id of score element is not the final exam and the extra credit - get score for every category except the final exam
+            var score = parseInt($(this).find(".score").val());
+            var weight = parseInt($(this).find(".weight").val()) / 100;
+            total += score*weight;
+          }
+          if($(this).find(".score").attr("id") == "extra_credit"){ //finding the value of extra credit to be added on at the end
+            extra = parseInt($(this).find(".score").val());
+          }
+          total += extra;
+        });
+
+        weight = parseInt($("#final_exam2").val())/100; //find the weight of the final exam category
+        //formula for grade: (desired score - total before exam) / final exam weight
+        var gradeNeeded = ($("#grade").val() - total)/weight; //calculate grade needed on final exam to get desired grade
+
+        $("#answer").html("<h3>" + String(gradeNeeded.toFixed(2)) + "%</h3>");
+    });
+
+    //allows user to enter their own weights
+    $("#custom").click(function(){
+        $(".weight").each(function(index,element){
+             //makes every weight enabled except for extra credit - extra credit has no weight
+            $(this).prop('disabled', false); //changes disabled property to false
+
+        });
+    });
+
+});
